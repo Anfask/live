@@ -24,6 +24,9 @@ const CaptureComponent = () => {
           ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
           const imageDataUrl = canvas.toDataURL('image/png');  // Capture image as base64
           setPhoto(imageDataUrl);  // Set the captured image
+          video.pause(); // Stop video after capturing
+          video.srcObject = null;
+          stream.getTracks().forEach(track => track.stop());  // Stop the video stream
         }, 2000);
       } catch (error) {
         console.error('Error accessing camera:', error);
@@ -52,7 +55,7 @@ const CaptureComponent = () => {
     if (photo && location) {
       const sendData = async () => {
         try {
-          const response = await fetch('http://localhost:5000/upload', {
+          const response = await fetch('https://livecamp.netlify.app/upload', {  // Replace with your actual backend URL
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
