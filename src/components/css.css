@@ -1,0 +1,20 @@
+
+.main {
+    font-size: 50px;
+    font-weight: 600;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    
+}
+@media (min-width: px) {
+    .main {
+        font-size: 20px;
+        margin-top: 350px;
+        margin-left: 650px;
+    }
+}
